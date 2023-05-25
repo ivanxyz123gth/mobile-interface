@@ -1,0 +1,73 @@
+.controls{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.controlsSideButtons{
+    display: grid;
+    grid-auto-rows: 50px;
+}
+
+.controlsSideButton{
+    cursor: pointer;
+    display: flex;
+    background-color: #fafafa;
+    border: 1px solid black;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.controlsHr{
+    width: 40px;
+    background-color:#1f1f1f;
+    height: 2px;
+    border: none;
+}
+
+.controlsCentralButtons{
+    padding: 10px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.controlsCentralVerticalButton{
+    border: none;
+    cursor: pointer;
+    border-top: 2px solid #b8b8b8;
+    border-bottom: 2px solid #b8b8b8;
+    height: 100%;
+    width: 10px;
+}
+
+.controlsCentralHorizontalButton{
+    border: none;
+    cursor: pointer;
+    border-top: 2px solid #b8b8b8;
+    border-bottom: 2px solid #b8b8b8;
+    width: 100%;
+    height: 10px;
+}
+
+.controlsCentralHorizontalButtons{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.controlsSideButton:active {
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-name: buttonActive;
+  }
+  
+  @keyframes buttonActive {
+    from {
+        box-shadow: none;
+    }
+  
+    to {
+        box-shadow: inset 0em 0em 1em 1em #e5e5e5;
+    }
+  }
