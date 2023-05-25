@@ -91,8 +91,8 @@ const spawnPic = (path: string, x: number, y: number, length: number, width: num
 };
 
 
-export const restart = (e: KeyboardEvent): void => {
-  if (e.ctrlKey && countGame) {
+export const restart = (): void => {
+  if (countGame) {
     countGame = false;
     snake.x = 96;
     snake.y = 160;
@@ -100,7 +100,7 @@ export const restart = (e: KeyboardEvent): void => {
     apple.y = rand(3, 6) * GRID;
     snake.cells = [];
     snake.maxCells = 1;
-    gameLoop = setInterval(loop, 200);
+    gameLoop = setInterval(loop, 400);
   }
 };
 
@@ -171,4 +171,4 @@ export const loop = (context:Context): void => {
   checkEdge();
 };
 
-let gameLoop: number = setInterval(loop, 200);
+let gameLoop: number = setInterval(loop, 400);

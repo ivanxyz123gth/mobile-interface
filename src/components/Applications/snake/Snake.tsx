@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { loop, restart } from "./SnakeGame";
+import { loop } from "./snakeGame";
 
 export const Snake = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,12 +12,9 @@ export const Snake = () => {
     const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
     if (context === null) return;
 
-    let gameLoop = setInterval(() => loop(context), 200);
-
-    document.addEventListener("keydown", restart);
+    let gameLoop = setInterval(() => loop(context), 400);
 
     return () => {
-      document.removeEventListener("keydown", restart);
       clearInterval(gameLoop);
     };
   }, [1,3,4,5]); 
