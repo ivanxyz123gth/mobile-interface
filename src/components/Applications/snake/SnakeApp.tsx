@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { loop } from "./snakeGame";
+import { loop } from "./snake";
 
 export const Snake = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,7 +17,7 @@ export const Snake = () => {
     return () => {
       clearInterval(gameLoop);
     };
-  }, [1,3,4,5]); 
+  }, []); 
 
   return <canvas ref={canvasRef} width="300" height="300"/>;
 };

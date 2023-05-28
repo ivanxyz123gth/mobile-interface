@@ -1,2 +1,2 @@
-export * from "./Snake";
-export * from "./snakeGame";
+export * from "./SnakeApp";
+export * from "./snake";
