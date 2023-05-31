@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { calculator } from "./calculator";
-import { EXPRESSION } from "../../PhoneCase/components";
 import styles from "./CalculatorApp.module.css";
 
-export const CalculatorApp = () => {
-    const [expression, setExpression] = useState(EXPRESSION);
-    
-    useEffect(() => {
-        setExpression(EXPRESSION);
-    }, [EXPRESSION]); 
-    
+export const CalculatorApp = ({expression}: {expression:string[]}) => {
+    console.log(expression)
     return (
     <div className={styles.calculator}>
         <p className={styles.calculatorExpression}>
