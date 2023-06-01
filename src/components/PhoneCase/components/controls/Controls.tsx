@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { CallIcon, ResetCallIcon } from "../../../Icons";
 import { control, restart } from "../../../Applications";
+import { KeyboardContext } from "../../../../MobilePhone";
 import styles from "./Controls.module.css";
-export const Controls = () =>(
+export const Controls = () =>{
+    const context = useContext(KeyboardContext);
+    const addValueFromCalc = context?.addValue;
+    const handleClick = (value:string) => {
+        addValueFromCalc(value);
+    }
+    return (
     <div className={styles.controls}>
         <div className={styles.controlsSideButtons}>
             <button className={styles.controlsSideButton} onClick={()=> restart()}>
@@ -24,7 +31,7 @@ export const Controls = () =>(
         </div>
 
         <div className={styles.controlsSideButtons}>
-            <button className={styles.controlsSideButton}>
+            <button className={styles.controlsSideButton} onClick={()=>handleClick("=")}>
                 <hr className={styles.controlsHr}></hr>
             </button>
             <button className={styles.controlsSideButton}>
@@ -32,4 +39,4 @@ export const Controls = () =>(
             </button>
         </div>
     </div>
-)
+)}

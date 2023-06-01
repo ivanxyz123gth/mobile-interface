@@ -1,14 +1,24 @@
-import React from "react";
+import React, { createContext, useState} from "react";
 import { PhoneCase } from "./components/PhoneCase";
-import { Snake } from "./components/Applications";
+import { CalculatorApp } from "./components";
 
-export const MobilePhone =()=> (
-    <>
+export const KeyboardContext = createContext({})
+
+export const MobilePhone = () => {
+  const [expression, setExpression] = useState<string[]>([]);
+  
+  const handleNumberChange = (algebraicValue: string) => {
+    setExpression((expression => [...expression, algebraicValue]));
+  }
+  
+  return(
+    <KeyboardContext.Provider value={{addValue: handleNumberChange, expression: expression}}>
       <PhoneCase>
-        <Snake/>
+        <CalculatorApp/>
       </PhoneCase>
-    </>
+    </KeyboardContext.Provider>
   )
+}
 
 
 

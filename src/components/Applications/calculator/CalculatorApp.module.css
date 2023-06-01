@@ -1,0 +1,20 @@
+.calculator{
+    width: 100%;
+    height: 100%;
+    background-color: #272440;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.calculatorExpression{
+    text-align: right;
+    width: 90%;
+    max-width: 90%;
+    height: 80px;
+    margin-bottom: 60px;
+    font-size: 64px;
+    color: white;
+    background-color: #272440;
+    border-bottom: solid white 1px;
+}
