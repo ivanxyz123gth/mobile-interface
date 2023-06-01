@@ -1,21 +1,20 @@
 import React, { createContext, useState} from "react";
 import { PhoneCase } from "./components/PhoneCase";
-import { CalculatorApp } from "./components/Applications";
+import { CalculatorApp } from "./components";
 
 export const KeyboardContext = createContext({})
 
 export const MobilePhone = () => {
   const [expression, setExpression] = useState<string[]>([]);
   
-  const handleCalcChange = (algebraicValue: string) =>{
-    expression.push(algebraicValue);
-    setExpression(expression);
+  const handleNumberChange = (algebraicValue: string) => {
+    setExpression((expression => [...expression, algebraicValue]));
   }
   
   return(
-    <KeyboardContext.Provider value={handleCalcChange}>
+    <KeyboardContext.Provider value={{addValue: handleNumberChange, expression: expression}}>
       <PhoneCase>
-        <CalculatorApp expression={expression}/>
+        <CalculatorApp/>
       </PhoneCase>
     </KeyboardContext.Provider>
   )

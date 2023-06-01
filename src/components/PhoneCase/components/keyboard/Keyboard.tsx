@@ -14,9 +14,10 @@ import styles from "./Keyboard.module.css"
 
 
 export const Keyboard = ()=>{
-    const addValue = useContext(KeyboardContext);
+    const context = useContext(KeyboardContext);
+    const addValue = context?.addValue;
     const handleClick = (value:string) => {
-        addValue(value);
+        addValue(value)
     }
 
     return (
