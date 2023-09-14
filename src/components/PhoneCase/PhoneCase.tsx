@@ -4,7 +4,11 @@ import { NokiaLogoIcon } from "../Icons";
 import styles from "./PhoneCase.module.css";
 import clsx from 'clsx';
 
-export const PhoneCase = ({children}) => (
+interface PhoneCaseProps {
+   children: React.ReactNode;
+}
+
+export const PhoneCase: React.FC = ({ children } : PhoneCaseProps) => (
     <div className={styles.phoneCase}>
        <div className={styles.phoneCaseSecondFrame}>
           <div className={styles.phoneCaseScreenPanel}>

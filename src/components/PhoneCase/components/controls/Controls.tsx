@@ -1,39 +1,50 @@
-import React, {useContext} from "react";
+import React from "react";
+import { useControlsStateManage } from "./hooks";
+import { useSelector } from "react-redux";
 import { CallIcon, ResetCallIcon } from "../../../Icons";
-import { control, restart } from "../../../Applications";
-import { KeyboardContext } from "../../../../MobilePhone";
+
 import styles from "./Controls.module.css";
-export const Controls = () =>{
-    const context = useContext(KeyboardContext);
-    const addValueFromCalc = context?.addValue;
-    const handleClick = (value:string) => {
-        addValueFromCalc(value);
-    }
+
+export const Controls: React.FC = () => {
+
+    const { centralBottomButtonFunc,
+            centralLeftButtonFunc,
+            centralRightButtonFunc, 
+            centralTopButtonFunc, 
+            linkToApp, 
+            enterButtonFunc, 
+            backButtonFunc} = useControlsStateManage();
+
+    const appOpen = useSelector((state: any)=> state.appOpen)
+
+    console.log(appOpen)
+
     return (
     <div className={styles.controls}>
         <div className={styles.controlsSideButtons}>
-            <button className={styles.controlsSideButton} onClick={()=> restart()}>
-                <hr className={styles.controlsHr}></hr>
-            </button>
+            <a href={linkToApp()} className={styles.controlsLink}>
+              <button className={styles.controlsSideButton} onClick={()=> enterButtonFunc()}>
+                 <hr className={styles.controlsHr}></hr>
+              </button>
+            </a>
             <button className={styles.controlsSideButton}>
-                <CallIcon/>
+              <CallIcon />
             </button>
         </div>
-
         <div className={styles.controlsCentralButtons}>
-            <button className={styles.controlsCentralVerticalButton} onClick={()=>control("left")}/>
+            <button className={styles.controlsCentralVerticalButton} onClick={()=> centralLeftButtonFunc()}/>
             <div className={styles.controlsCentralHorizontalButtons}>
-                <button className={styles.controlsCentralHorizontalButton} onClick={()=>control("down")}/>
-                <button className={styles.controlsCentralHorizontalButton} onClick={()=>control("up")}/>
+                <button className={styles.controlsCentralHorizontalButton} onClick={()=> centralBottomButtonFunc()}/>
+                <button className={styles.controlsCentralHorizontalButton} onClick={()=> centralTopButtonFunc()}/>
             </div>
-            <button className={styles.controlsCentralVerticalButton} onClick={()=>control("right")}/>
-
+            <button className={styles.controlsCentralVerticalButton} onClick={()=>centralRightButtonFunc()}/>
         </div>
-
         <div className={styles.controlsSideButtons}>
-            <button className={styles.controlsSideButton} onClick={()=>handleClick("=")}>
+            <a href="/">
+              <button className={styles.controlsSideButton} onClick={()=>backButtonFunc()}>
                 <hr className={styles.controlsHr}></hr>
-            </button>
+              </button>
+            </a>
             <button className={styles.controlsSideButton}>
                 <ResetCallIcon/>
             </button>

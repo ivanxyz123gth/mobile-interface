@@ -8,3 +8,7 @@ export * from "./MicrophoneIcon";
 export * from "./CallIcon";
 export * from "./ResetCallIcon";
 export * from "./NokiaLogoIcon";
+export * from "./SnakeIcon";
+export * from "./CalculatorIcon";
+export * from "./PhoneIcon";
+export * from "./NotebookIcon";
