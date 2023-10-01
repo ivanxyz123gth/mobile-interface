@@ -132,10 +132,8 @@ export const control = (direction: string): void => {
   if (!countGame) {
     switch (direction) {
       case "left":
-        console.log(snake)
         snake.dx = -GRID;
         snake.dy = 0;
-        console.log(snake)
         break;
 
       case "down":

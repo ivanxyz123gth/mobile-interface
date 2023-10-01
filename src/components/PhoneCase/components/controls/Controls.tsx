@@ -13,11 +13,8 @@ export const Controls: React.FC = () => {
             centralTopButtonFunc, 
             linkToApp, 
             enterButtonFunc, 
-            backButtonFunc} = useControlsStateManage();
-
-    const appOpen = useSelector((state: any)=> state.appOpen)
-
-    console.log(appOpen)
+            backButtonFunc,
+            callButtonHref} = useControlsStateManage();
 
     return (
     <div className={styles.controls}>
@@ -27,9 +24,11 @@ export const Controls: React.FC = () => {
                  <hr className={styles.controlsHr}></hr>
               </button>
             </a>
-            <button className={styles.controlsSideButton}>
-              <CallIcon />
-            </button>
+            <a href={callButtonHref()}>
+              <button className={styles.controlsSideButton}>
+                <CallIcon />
+              </button>
+            </a>
         </div>
         <div className={styles.controlsCentralButtons}>
             <button className={styles.controlsCentralVerticalButton} onClick={()=> centralLeftButtonFunc()}/>

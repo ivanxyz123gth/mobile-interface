@@ -1,11 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { control, restart } from '../../../../Applications';
-import { up, down, enter, back } from '../../../../../slices';
+import { up, down, enter, back, addValueToExpression } from '../../../../../slices';
 import type { RootState } from "../../../../../store";
+
+interface ControlsStateManageReturn {
+  linkToApp: () => string;
+}
 
 export const useControlsStateManage = () => {
   const appNumber = useSelector((state: RootState) => state.appNumber);
   const appOpen = useSelector((state: RootState) => state.appOpen);
+  const phoneNumber = useSelector((state: RootState) => state.expression);
   const dispatch = useDispatch();
 
   const linkToApp = (): string => {
@@ -27,6 +32,8 @@ export const useControlsStateManage = () => {
     switch(appNumber){
       case 1:
         return appOpen ? control("down") : dispatch(up());
+      case 2: 
+        return appOpen ? dispatch(addValueToExpression("+")) : dispatch(up());
       default:
         return appOpen ? () => {} : dispatch(up());
     }
@@ -36,6 +43,8 @@ export const useControlsStateManage = () => {
     switch(appNumber){
       case 1:
         return appOpen ? control("up") : dispatch(down());
+      case 2: 
+        return appOpen ? dispatch(addValueToExpression("-")) : dispatch(down());
       default:
         return appOpen ? () => {}: dispatch(down());
     }
@@ -45,6 +54,8 @@ export const useControlsStateManage = () => {
     switch(appNumber){
       case 1:
         return appOpen ? control("left") : () => {};
+      case 2: 
+        return appOpen ? dispatch(addValueToExpression("*")) : () => {};
       default:
         return () => {};
     }
@@ -54,6 +65,8 @@ export const useControlsStateManage = () => {
     switch(appNumber){
       case 1:
         return appOpen ? control("right") : () => {};
+      case 2: 
+        return appOpen ? dispatch(addValueToExpression("/")) : () => {};
       default:
         return () => {};
     }
@@ -75,6 +88,13 @@ export const useControlsStateManage = () => {
     } 
   };
 
+  const callButtonHref = ():string =>{
+    if(appOpen && appNumber === 3){
+      return `tel:${phoneNumber}`
+    }
+    return "";
+  }
+
   return {
     linkToApp, 
     centralBottomButtonFunc,
@@ -82,6 +102,7 @@ export const useControlsStateManage = () => {
     centralLeftButtonFunc,
     centralRightButtonFunc,
     enterButtonFunc,
-    backButtonFunc
+    backButtonFunc, 
+    callButtonHref
   }
 }

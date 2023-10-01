@@ -1,8 +1,12 @@
 import React, { useRef, useEffect } from "react";
+import { setAppNumber } from "../../../slices";
+import { useDispatch } from 'react-redux';
 import { loop } from "./snake";
 
-export const Snake = () => {
+export const Snake: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const dispatch = useDispatch();
+  dispatch(setAppNumber(1));
 
   useEffect(() => {
     const canvas:HTMLCanvasElement | null = canvasRef.current;

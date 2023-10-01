@@ -10,6 +10,7 @@
 .calculatorExpression{
     text-align: right;
     width: 90%;
+    overflow: hidden;
     max-width: 90%;
     height: 80px;
     margin-bottom: 60px;
