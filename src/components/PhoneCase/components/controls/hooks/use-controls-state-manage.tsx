@@ -88,9 +88,10 @@ export const useControlsStateManage = () => {
     } 
   };
 
-  const callButtonHref = ():string =>{
+  const callButtonHref = ():string => {
+    const phoneNumberString = phoneNumber.join("");
     if(appOpen && appNumber === 3){
-      return `tel:${phoneNumber}`
+      return `tel:${phoneNumberString}`
     }
     return "";
   }
